@@ -2,17 +2,45 @@ import React from "react";
 import { useState } from "react";
 import './styles/style.css'
 import Logo from './assets/logo.png'
+import cards from './constants/answers-questions'
+
 
 export default function App() {
+  
+  const CardInicial = () => {
+    return (
+      <div className="card-inicial">
+        <p>Pergunta 01</p>
+        <button onClick={iniciarPergunta}>Play</button>
+      </div>
+    )
+  };
+
+  const CardPergunta = (props) => {
+    return (
+      <div className="card-pergunta">
+        <p>O que é JSX?</p>
+      </div>
+    )
+  }
 
   const [deck, setDeck] = useState(""); // Mudar quais cards serão mostrados na revisão
-  const [pergunta, setPergunta] = useState("oi"); // Seleciona qual será a pergunta mostrada no card
-  const [resposta, setResposta] = useState("nao"); // Seleciona qual será a resposta mostrada no """""card baseado na pergunta"""""
-  const [card, setCard] = useState("card-pergunta"); // Mudar o card, se irá mostrar a resposta ou a pergunta
+  const [card, setCard] = useState(() => <CardInicial />); // Mudar o card, se irá mostrar o inicial, pergunta ou resposta
 
-  function responderPergunta() {
-    setCard("card-resposta");
+
+  function iniciarPergunta() {
+    setCard(<CardPergunta />)
   }
+
+  function descobrirResposta() {
+
+  }
+
+  function responderCard() {
+
+  }
+
+  // console.log(cards)
 
   return (
 
@@ -23,12 +51,20 @@ export default function App() {
           <img src={Logo} alt="Logo do site" />
           <p>ZapRecall</p>
         </div>
-        <div className={card}>
-          <button onClick={responderPergunta}>play</button>
-        </div>
-
+        {card}
       </div>
     </div>
 
   );
 }
+
+// function Cards(props) {
+//   return (
+//     <div>
+//       <div className="card-resposta">
+//         <p>{props.cards.question}</p>
+//         <button>play</button>
+//       </div>
+//     </div>
+//   )
+// }
