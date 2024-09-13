@@ -21,6 +21,15 @@
     align-items: center;
 }
 
+.nome-logo
+{
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 50px;
+}
+
 .card-inicial
 {
     padding: 9px;
