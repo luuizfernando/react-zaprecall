@@ -1,27 +1,26 @@
 import React from "react";
 import { useState } from "react";
-import './styles/style.css'
-import Logo from './assets/logo.png'
-import cards from './constants/answers-questions'
+import cards from './constants/answers-questions';
 import Topo from "./components/Topo";
+import Cards from "./components/Cards";
 
 
 export default function App() {
 
+  const [showQuestion, setShowQuestion] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
 
-  const [deck, setDeck] = useState(""); // Mudar quais cards serão mostrados na revisão
-  const [card, setCard] = useState(""); // Mudar o card, se irá mostrar o inicial, pergunta ou resposta
-
-
-  function iniciarPergunta() {
-
-  }
-
-  function descobrirResposta() {
-
+  function iniciarCard() {
   }
 
   function responderCard() {
+  }
+
+  function CardPergunta() {
+
+  }
+
+  function CardResposta() {
 
   }
 
@@ -31,7 +30,13 @@ export default function App() {
 
       <div className="content">
         <div className="logo">
-            <Topo />
+          <Topo />
+        </div>
+        <div className="cards-container">
+          <Cards
+            iniciarCard={iniciarCard}
+            cards={cards}
+          />
         </div>
       </div>
     </div>

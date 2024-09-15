@@ -1,8 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+
+/* CONFIGURAÇÕES DE ALINHAMENTO */
 .container
 {
     display: flex;
     justify-content: center;
     background-color: #FB6B6B;
+    height: 100vh;
 }
 
 .content
@@ -14,6 +33,10 @@
     gap: 50px;
 }
 
+/* ===================================== */
+
+
+/* TOPO DO SITE */
 .logo
 {
     display: flex;
@@ -29,31 +52,32 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-left: 50px;
 }
+/* ===================================== */
 
-.card-inicial
+/* ORGANIZAÇÃO DOS CARDS */
+
+.cards-container
 {
-    padding: 9px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================== */
+
+/* ESTILIZAÇÃO DOS CARDS  */
+
+.card
+{
+    height: 6vh;
+    padding: 10px;
+    margin: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
-    border-radius: 6px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.316);
+    border-radius: 7px;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.card-pergunta
-{
-    padding: 9px;
-    background-color: rgba(255, 255, 0, 0.496);
-    border-radius: 6px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.316);
-}
-
-.card-resposta
-{
-    padding: 9px;
-    background-color: rgba(255, 255, 0, 0.496);
-    border-radius: 6px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.316);
-}
-
-/* FB6B6B */
+/* ====================== */
