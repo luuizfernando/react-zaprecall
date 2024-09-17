@@ -10,34 +10,48 @@ export default function FlashCard({ card }) {
     const [finished, setFinished] = useState(false);
 
     function showQuestion() {
-
+        if (!finished) {
+            setStarted(true);
+        }
     }
 
     function showAnswer() {
-        
+        setTurned(true);
     }
 
     function answerCard() {
-        
+        setStarted(false);
+        setFinished(true);
     }
 
     return (
-        <CardInicial>
-            <p>Pergunta {card.id}</p>
-            <img src={SetaPlay} alt="" onClick={showQuestion}/>
-        </CardInicial>
-        // <CardPergunta>
-        //     <p>{card.question}</p>
-        //     <img src={SetaVirar} alt="" onClick={showAnswer}/>
-        // </CardPergunta>
-        // <CardResposta>
-        //     <p>{card.answer}</p>
-        //     <ContainerButtons>
-        //         <button>Não lembrei</button>
-        //         <button>Quase não lembrei</button>
-        //         <button>Zap!</button>
-        //     </ContainerButtons>
-        // </CardResposta>
+        <>
+            {!started ? (
+                <CardInicial>
+                    <p>Pergunta {card.id}</p>
+                    <img src={SetaPlay} alt="" onClick={showQuestion} />
+                </CardInicial>
+            ) : (
+                <>
+                    {!turned ? (
+                        <CardPergunta>
+                            <p>{card.question}</p>
+                            <img src={SetaVirar} alt="" onClick={showAnswer} />
+                        </CardPergunta>
+                    ) : (
+                        <CardResposta>
+                            <p>{card.answer}</p>
+                            <ContainerButtons>
+                                <button onClick={answerCard}>Não lembrei</button>
+                                <button onClick={answerCard}>Quase não lembrei</button>
+                                <button onClick={answerCard}>Zap!</button>
+                            </ContainerButtons>
+                        </CardResposta>
+                    )}
+                </>
+            )
+            }
+        </>
     )
 }
 

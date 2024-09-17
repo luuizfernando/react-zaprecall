@@ -19,7 +19,7 @@ export default function DeckScreen() {
                 </ContainerLogo>
                 
                 {deckReact.map((card) => 
-                    <FlashCard card={card}/>
+                    <FlashCard key={card.id} card={card}/>
                 )}
 
                 <Footer />
