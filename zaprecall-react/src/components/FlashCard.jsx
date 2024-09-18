@@ -1,13 +1,18 @@
 import { useState } from "react";
-import styled from "styled-components"
-import SetaPlay from "../assets/seta_play.png"
-import SetaVirar from "../assets/seta_virar.png"
+import styled from "styled-components";
+import SetaPlay from "../assets/seta_play.png";
+import SetaVirar from "../assets/seta_virar.png";
+import IconeCerto from "../assets/icone_certo.png";
+import IconeQuase from "../assets/icone_quase.png";
+import IconeErro from "../assets/icone_erro.png";
+import { VERDE, AMARELO, VERMELHO, CINZA } from "../constants/colors";
 
 export default function FlashCard({ card, increaseCounter }) {
 
     const [started, setStarted] = useState(false);
     const [turned, setTurned] = useState(false);
     const [finished, setFinished] = useState(false);
+    const [answered, setAnswered] = useState("not-answered");
 
     function showQuestion() {
         if (!finished) {
@@ -19,18 +24,32 @@ export default function FlashCard({ card, increaseCounter }) {
         setTurned(true);
     }
 
-    function answerCard() {
+    function selectIcon() {
+        switch (answered) {
+            case "wrong":
+                return IconeErro
+            case "almost":
+                return IconeQuase
+            case "right":
+                return IconeCerto
+            default:
+                return SetaPlay
+        }
+    }
+
+    function answerCard(questionStatus) {
         setStarted(false);
         setFinished(true);
+        setAnswered(questionStatus);
         increaseCounter();
     }
 
     return (
         <>
             {!started ? (
-                <CardInicial>
+                <CardInicial answered={answered}>
                     <p>Pergunta {card.id}</p>
-                    <img src={SetaPlay} alt="" onClick={showQuestion} />
+                    <img src={selectIcon()} alt="" onClick={showQuestion} />
                 </CardInicial>
             ) : (
                 <>
@@ -43,9 +62,9 @@ export default function FlashCard({ card, increaseCounter }) {
                         <CardResposta>
                             <p>{card.answer}</p>
                             <ContainerButtons>
-                                <button onClick={answerCard}>Não lembrei</button>
-                                <button onClick={answerCard}>Quase não lembrei</button>
-                                <button onClick={answerCard}>Zap!</button>
+                                <button onClick={() => answerCard("wrong")}>Não lembrei</button>
+                                <button onClick={() => answerCard("almost")}>Quase não lembrei</button>
+                                <button onClick={() => answerCard("right")}>Zap!</button>
                             </ContainerButtons>
                         </CardResposta>
                     )}
@@ -65,6 +84,21 @@ const CardInicial = styled.div`
     border-radius: 7px;
     font-size: 16px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    p {
+        text-decoration: ${props => props.answered === "not-answered" ? "none" : "line-through"};
+        color: ${props => {
+            switch (props.answered) {
+                case "right":
+                    return VERDE
+                case "wrong":
+                    return VERMELHO
+                case "almost":
+                    return AMARELO
+                default:
+                    return CINZA
+            }
+        }};
+    }
     img {
         cursor: pointer;
     }
