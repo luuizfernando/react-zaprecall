@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Logo from '../assets/logo.png'
 import FlashCard from "./FlashCard";
@@ -8,6 +7,12 @@ import styled from "styled-components";
 import deckReact from "../constants/deckReact";
 
 export default function DeckScreen() {
+
+    const [counter, setCounter] = useState(0);
+
+    function increaseCounter() {
+        setCounter(counter + 1);
+    }
 
     return (
 
@@ -19,11 +24,11 @@ export default function DeckScreen() {
                 </ContainerLogo>
                 
                 {deckReact.map((card) => 
-                    <FlashCard key={card.id} card={card}/>
+                    <FlashCard key={card.id} card={card} increaseCounter={increaseCounter}/>
                 )}
 
-                <Footer />
             </ContentContainer>
+            <Footer totalQuestions={deckReact.length} questionsCounter={counter}/>
         </MainContainer>
 
     )
@@ -33,17 +38,20 @@ export default function DeckScreen() {
 const MainContainer = styled.div`
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center ;
     background-color: #FB6B6B;
-    height: 120vh;
+    height: 100vh;
 `
 const ContentContainer = styled.div`
+    height: 100vh;
     width: 30vw;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 `
 const ContainerLogo = styled.div`
-    margin-top: 30px;
+margin-top: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;

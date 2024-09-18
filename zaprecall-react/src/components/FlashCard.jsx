@@ -3,7 +3,7 @@ import styled from "styled-components"
 import SetaPlay from "../assets/seta_play.png"
 import SetaVirar from "../assets/seta_virar.png"
 
-export default function FlashCard({ card }) {
+export default function FlashCard({ card, increaseCounter }) {
 
     const [started, setStarted] = useState(false);
     const [turned, setTurned] = useState(false);
@@ -22,6 +22,7 @@ export default function FlashCard({ card }) {
     function answerCard() {
         setStarted(false);
         setFinished(true);
+        increaseCounter();
     }
 
     return (
