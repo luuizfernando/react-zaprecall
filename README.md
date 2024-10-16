@@ -79,3 +79,8 @@ The game will be available at `http://localhost:3000`.
 Developed by [Luiz Fernando](https://github.com/luizfernando2644). Feel free to contribute or send suggestions!
 
 ---
+
+## 📫 Contato
+
+- **Email:** [luizfernandosant26@gmail.com](mailto:luizfernandosant26@gmail.com)
+- **LinkedIn:** [linkedin.com/in/luiz-fernando-dalpra](https://linkedin.com/in/luiz-fernando-dalpra)
