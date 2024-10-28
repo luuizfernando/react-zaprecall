@@ -1,3 +1,5 @@
+Salvador Alves de Melo Junior
+
 # ZapRecall ⚡️
 
 **ZapRecall** is a flashcard game developed in **React**. The goal is to help with memorization of concepts, allowing users to review questions and answers while testing their knowledge.
