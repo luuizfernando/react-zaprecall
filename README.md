@@ -45,7 +45,7 @@ If you want to run the project locally, follow the steps below:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/seu-usuario/zaprecall.git
+    https://github.com/luuizfernando/react-zaprecall.git
     ```
 
 2. Install dependencies:
