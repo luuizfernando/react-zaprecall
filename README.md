@@ -5,7 +5,7 @@
 ## 🌐 Access ZapRecall
 
 You can access the game online: 
-[https://zaprecall-xi.vercel.app](#)
+[https://zaprecall-xi.vercel.app](https://zaprecall-xi.vercel.app/)
 
 ---
 
